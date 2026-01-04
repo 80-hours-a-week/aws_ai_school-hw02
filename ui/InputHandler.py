@@ -73,9 +73,9 @@ class InputHandler:
             except ValueError:
                 print("[오류] 숫자를 입력하세요")
     
+    # 티켓 구매 개수 입력하기
     @staticmethod
     def get_ticket_count() -> int:
-        """티켓 구매 개수 입력"""
         while True:
             try:
                 count = int(input("구매할 티켓 수: ").strip())
@@ -85,10 +85,10 @@ class InputHandler:
             except ValueError:
                 print("[오류] 올바른 숫자를 입력하세요")
     
+    # 수동으로 번호 입력하기
     @staticmethod
     def get_numbers(count: int, min_num: int, max_num: int, 
                    manual: bool = False, prompt_msg: Optional[str] = None) -> Optional[List[int]]:
-        """번호 입력 (수동)"""
         if not manual:
             return None
         
@@ -120,9 +120,9 @@ class InputHandler:
             except ValueError:
                 print("[오류] 올바른 숫자를 입력하세요")
     
+    # 사용자가 올바르게 선택을 했는지 확인하기
     @staticmethod
     def confirm_action(message: str) -> bool:
-        """행동 확인"""
         while True:
             response = input(f"{message} (y/n): ").strip().lower()
             if response in ['y', 'yes', '예']:
