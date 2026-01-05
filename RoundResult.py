@@ -34,7 +34,6 @@ class RoundResult:
         self.total_spent = 0
         self.winning_tickets: List[WinningTicket] = []  # (티켓, 등급, 상금)
         self.total_won = 0
-        self.net_profit = 0
         
     # 구매 정보 설정
     def set_purchase_info(self, ticket_count: int, total_cost: int):
@@ -48,12 +47,13 @@ class RoundResult:
         winning_ticket = WinningTicket(ticket=ticket, rank=rank, prize=prize)
         self.winning_tickets.append(winning_ticket)
         self.total_won += prize
-        
+
     # 순이익 계산하기
-    def calculate_net_profit(self):
+    @property
+    def net_profit(self) -> int:
         self._logger.info("순이익 계산하기")
-        self.net_profit = self.total_won - self.total_spent
-        
+        return self.total_won - self.total_spent
+
     # 등수별 당첨 횟수 계산하기
     def get_winning_count_by_rank(self) -> Dict[int, int]:
         self._logger.info("등수별로 당첨 횟수를 계산")
