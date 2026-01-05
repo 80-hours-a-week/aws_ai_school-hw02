@@ -107,10 +107,6 @@ class GameController:
                 self._logger.debug("라운드 결과에 기록")
                 round_result.add_winning_ticket(ticket, rank, prize)
         
-        # 순이익 계산
-        self._logger.debug("순이익 계산")
-        round_result.calculate_net_profit()
-        
         # 히스토리에 추가
         self._logger.debug("히스토리에 추가")
         self.round_history.append(round_result)
