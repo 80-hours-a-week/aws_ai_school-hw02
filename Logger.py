@@ -29,9 +29,8 @@ class Logger:
                 break
     
     async def print_every_log(self):
-        dir_iter = self._log_path.iterdir()
-        try:    
-            for file in dir_iter:
+        for file in self._log_path.iterdir():
+            try:
                 await self.print_log(file)
-        except Exception as e:
-            print(f"There is something wrong: {e}")
+            except Exception as e:
+                print(f"파일 처리 중 오류 발생 ({file}) : {e}")
