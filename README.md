@@ -11,6 +11,7 @@
     - Lotto645.py: 6/45 로또 게임 클래스
     - NumberBasedLottery.py: 숫자 기반 로터리 게임 클래스
     - PowerballLottery.py: 파워볼 로터리 게임 클래스
+- logs(자동 생성) : 로그 파일이 모여있는 폴더
 - prize: 상금 관련 모듈
     - DrawingMachine.py: 추첨 기계 클래스
     - PrizeRank.py: 당첨 등수 클래스
@@ -23,6 +24,7 @@
     - InputHandler.py: 사용자 입력을 관리하는 클래스
     - OutputHandler.py: 출력을 관리하는 클래스
     - UIManager.py: UI 관리자 클래스
+- Logger.py: 로그 관리를 위한 클래스
 - main.py: 게임 실행을 위한 진입점
 - RoundResult.py: 각 라운드별 결과에 대한 클래스
 - User.py: 유저에 대한 클래스
