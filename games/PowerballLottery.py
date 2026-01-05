@@ -7,12 +7,14 @@ from tickets.PowerballTicket import PowerballTicket
 from prize.PrizeStructure import PrizeStructure
 from prize.PrizeRank import PrizeRank
 from prize.DrawingMachine import DrawingMachine
+import logging
+from Logger import Logger
 
 # 파워볼 게임
 class PowerballLottery(NumberBasedLottery):
     
     def __init__(self):
-        logging.basicConfig(filename="log/game_log.log", filemode="at", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
+        logging.basicConfig(filename="log/powerballlottery.log", filemode="w", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
         logging.debug("파워볼 로터리 게임 객체 생성")
         super().__init__(
             name="파워볼",
@@ -43,7 +45,7 @@ class PowerballLottery(NumberBasedLottery):
         
     # 추첨 기계 초기화
     def _setup_drawing_machine(self):
-        logger.debug("추첨 기계 초기화")
+        logging.debug("추첨 기계 초기화")
         self.drawing_machine = DrawingMachine(
             min_number=1,
             max_number=28,

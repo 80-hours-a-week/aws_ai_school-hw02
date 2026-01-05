@@ -7,7 +7,7 @@ import logging
 class Lotto645Ticket(LotteryTicket):
     
     def __init__(self, numbers: List[int]):
-        logging.basicConfig(filename="log/game_log.log", filemode="a", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
+        logging.basicConfig(filename="log/lotto645ticket.log", filemode="w", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
         logging.debug("6/45 로또 티켓 객체 생성")
         super().__init__(numbers, "로또 6/45")
         

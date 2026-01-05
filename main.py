@@ -4,14 +4,14 @@ from games.Lotto645 import Lotto645
 from games.PowerballLottery import PowerballLottery
 from base.GameManager import GameManager
 from ui.UIManager import UIManager
-import logging
+import logging, asyncio
 from Logger import Logger
 
 # 로또 어플리케이션
 class LottoApp:
     
     def __init__(self):
-        logging.basicConfig(filename="log/game_log.log", filemode="wt", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
+        logging.basicConfig(filename="log/lottoapp.log", filemode="w", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
         logging.debug("UI 매니저 객체 생성됨")
         self.ui_manager = UIManager()
         logging.debug("현재 게임 없음")
@@ -48,9 +48,8 @@ class LottoApp:
                 self.current_game = PowerballLottery()
             elif game_choice == 3:
                 logging.debug("로그 출력 진입")
-                game_logger = Logger("log/game_log.log")
-                game_logger.get_log()
-                game_logger.print_log()
+                game_logger = Logger("log")
+                asyncio.run(game_logger.print_every_log())
                 break
             else:
                 self.ui_manager.show_error("올바르지 않은 선택입니다.")

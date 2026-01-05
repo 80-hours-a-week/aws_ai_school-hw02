@@ -8,7 +8,7 @@ import logging
 class StatisticsAnalyzer:
     
     def __init__(self):
-        logging.basicConfig(filename="log/game_log.log", filemode="at", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
+        logging.basicConfig(filename="log/statisticsanalyzer.log", filemode="w", format="%(asctime)s - %(levelname)s - %(message)s", level=logging.DEBUG)
         logging.debug("통계 분석기 객체 생성")
         self.total_spent = 0
         self.total_won = 0
