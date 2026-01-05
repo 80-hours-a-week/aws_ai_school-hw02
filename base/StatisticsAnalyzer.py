@@ -38,7 +38,7 @@ class StatisticsAnalyzer:
             'net_profit': self.total_won - self.total_spent
         }
     
-    # 등급별 상세 분석
+    # 등수별 상세 분석
     def get_frequency_analysis(self) -> Dict[int, Dict]:
         analysis = {} 
         for rank, count in self.winning_frequency.items():

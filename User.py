@@ -46,5 +46,4 @@ class User:
     
     # 인스턴스의 출력 양식
     def __repr__(self):
-        return (f"User(name={self.name}, balance={self.balance:,}원, "
-                f"tickets={len(self.owned_tickets)})")
+        return (f"User(name={self.name}, balance={self.balance:,}원, tickets={len(self.owned_tickets)})")

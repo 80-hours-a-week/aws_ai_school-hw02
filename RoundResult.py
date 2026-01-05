@@ -38,7 +38,4 @@ class RoundResult:
     
     # 인스턴스의 출력 양식
     def __repr__(self):
-        return (f"Round {self.round_number}: "
-                f"구매 {self.tickets_purchased}장, "
-                f"당첨 {len(self.winning_tickets)}장, "
-                f"수익 {self.net_profit:+,}원")
+        return (f"Round {self.round_number}: 구매 {self.tickets_purchased}장, 당첨 {len(self.winning_tickets)}장, 수익 {self.net_profit:+,}원")

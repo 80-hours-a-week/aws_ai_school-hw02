@@ -39,5 +39,4 @@ class DrawingMachine:
     
     # 인스턴스의 출력 양식
     def __repr__(self):
-        return (f"DrawingMachine({self.min_number}-{self.max_number}, "
-                f"draw {self.numbers_to_draw}, bonus: {self.has_bonus})")
+        return (f"DrawingMachine({self.min_number}-{self.max_number}, draw {self.numbers_to_draw}, bonus: {self.has_bonus})")
