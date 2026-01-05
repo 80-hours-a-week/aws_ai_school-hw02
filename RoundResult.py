@@ -1,8 +1,14 @@
 # 라운드 진행 결과 클래스
-from typing import List, Tuple, Dict
+from typing import List, Dict
+from dataclasses import dataclass
 from tickets.Ticket import Ticket
 import logging
 
+@dataclass
+class WinningTicket:
+    ticket: Ticket
+    rank: int
+    prize: int
 
 # 복권 시뮬레이션을 한 라운드 진행한 결과
 class RoundResult:
@@ -26,7 +32,7 @@ class RoundResult:
         self.drawn_numbers = drawn_numbers
         self.tickets_purchased = 0
         self.total_spent = 0
-        self.winning_tickets: List[Tuple[Ticket, int, int]] = []  # (티켓, 등급, 상금)
+        self.winning_tickets: List[WinningTicket] = []  # (티켓, 등급, 상금)
         self.total_won = 0
         self.net_profit = 0
         
@@ -39,7 +45,8 @@ class RoundResult:
     # 당첨 티켓 추가
     def add_winning_ticket(self, ticket: Ticket, rank: int, prize: int):
         self._logger.info("당첨 티켓 추가")
-        self.winning_tickets.append((ticket, rank, prize))
+        winning_ticket = WinningTicket(ticket=ticket, rank=rank, prize=prize)
+        self.winning_tickets.append(winning_ticket)
         self.total_won += prize
         
     # 순이익 계산하기
@@ -51,8 +58,8 @@ class RoundResult:
     def get_winning_count_by_rank(self) -> Dict[int, int]:
         self._logger.info("등수별로 당첨 횟수를 계산")
         rank_count = {}
-        for _, rank, _ in self.winning_tickets:
-            rank_count[rank] = rank_count.get(rank, 0) + 1
+        for ticket in self.winning_tickets:
+            rank_count[ticket.rank] = rank_count.get(ticket.rank, 0) + 1
         return rank_count
     
     # 인스턴스의 출력 양식
