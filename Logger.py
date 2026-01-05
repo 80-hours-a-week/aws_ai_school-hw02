@@ -9,14 +9,14 @@ class Logger:
         self._log_path = Path(dir_name)
     
     def get_log(self, filename: Path):
-        for i in range(len(self._encoding_list)):
-            with open(filename, "rt", encoding=self._encoding_list[i]) as file:
-                try:
+        for encoder in self._encoding_list:
+            try:
+                with open(filename, "rt", encoding=encoder) as file:
                     for line in file:
                         yield line
-                except Exception as e:
-                    print(f"There was an error while reading the game log: {e}")
-                    pass
+                break
+            except UnicodeDecodeError:
+                continue
     
     async def print_log(self, filename: Path):
         log_generator = self.get_log(filename)
